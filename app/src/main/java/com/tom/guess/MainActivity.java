@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     String TAG = MainActivity.class.getSimpleName();
     private TextView number;
     private int num;
-    int secret = new Random().nextInt(10) +1;
+    int secret = new Random().nextInt(10)+1;
 
 
     @Override
@@ -38,14 +38,22 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(num == secret) {
-                    Toast.makeText(MainActivity.this,"you are right!",Toast.LENGTH_LONG).show();
-
-                }
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
+    }
+    public void guess(View view){
+        int num =Integer.parseInt(number.getText().toString());
+        number.setText(Integer.toString(num));
+        if (num < secret){
+            Toast.makeText(MainActivity.this, "Higher", Toast.LENGTH_SHORT).show();
+        }else if (num>secret){
+            Toast.makeText(MainActivity.this, "Lower", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(MainActivity.this, "you are right!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
@@ -69,6 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
 
-       
+
     }
 }
