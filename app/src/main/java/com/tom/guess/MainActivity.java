@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                reset();
+                Log.d(TAG, "secret"+secret);
             }
         });
     }
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 reset();
+                Log.d(TAG, "secret"+secret);
             }
         };
         number.setText(Integer.toString(num));
@@ -95,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
         new AlertDialog.Builder(MainActivity.this)
-                .setMessage("You are right!")
-                .setPositiveButton("OK",null)
+                .setMessage(message)
+                .setPositiveButton("ok", listener)
                 .show();
 
     }
@@ -105,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         secret = new Random().nextInt(10)+1;
         counter=0;
         edCounter.setText(counter+"");
+        number.setText("");
     }
 
 
